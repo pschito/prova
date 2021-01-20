@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+
+<html lang="testCFDHub">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1. INTRODUCTION &#8212; provaCFDHub 0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to provaCFDHub&#39;s documentation!" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="introduction">
+<h1><span class="section-number">1. </span>INTRODUCTION<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>This guide is aimed at all members collaborating with the research groups that are part of the CFDHub (including Master and PhD students, Post-docs and all other members).
+The goal is to provide information in order to get started using the available computational resources autonomously and share the rules for a common use of the whole HPC system.</p>
+</div>
+<div class="section" id="general-information">
+<h1><span class="section-number">2. </span>GENERAL INFORMATION<a class="headerlink" href="#general-information" title="Permalink to this headline">¶</a></h1>
+<p>CFDHub framework shares a common environment in order to facilitate the use of resources and the portability of data and programs.</p>
+<p>Users can access any system in similar ways, can expect similar behavior and have access to shared resources despite the different application characteristics of the various systems.</p>
+<p>In the next sections, we will present the common aspects of the environment, both in terms of shared resources (storage) and common procedures (access, accounting, filesystems organization, production environment, programming environment, batch schedulers, ...).</p>
+<p>Specific information concerning the different systems is reported in the &quot;Group Specific Guides&quot; chapter.</p>
+<div class="section" id="getting-started">
+<h2><span class="section-number">2.1. </span>GETTING STARTED<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>The first step is to get a username on our database and a password to enter our HPC clusters.</p>
+<ol class="arabic simple">
+<li><p>Register on our website <a class="reference external" href="https://www.cfdhub.polimi.it/userguide/">https://www.cfdhub.polimi.it/userguide/</a> by clicking on the &quot;FORM&quot; button and filling the required fields.</p></li>
+<li><p>After some time you will receive an email with your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;password&gt;</span></code></p></li>
+</ol>
+<p><em>Remember:</em> <strong>Login credentials are to be considered as strictly personal</strong> <em>, meaning that NO SHARING between members of the same working group is expected to happen. Every single user entitled with login credentials is to be considered personally responsible for any misuse that should take place.</em></p>
+<div class="section" id="access-to-the-cluster">
+<h3><span class="section-number">2.1.1. </span>ACCESS TO THE CLUSTER<a class="headerlink" href="#access-to-the-cluster" title="Permalink to this headline">¶</a></h3>
+<p>This section describes how to install and set-up the programs needed to connect your terminal (workstation or laptop) to the cluster.</p>
+</div>
+<div class="section" id="types-of-access">
+<h3><span class="section-number">2.1.2. </span>TYPES OF ACCESS<a class="headerlink" href="#types-of-access" title="Permalink to this headline">¶</a></h3>
+<p>Three ways exist to access the CFDHub HPC:</p>
+<ol class="arabic simple">
+<li><p>directly from PoliMi network;</p></li>
+<li><p>from VPN service;</p></li>
+<li><p>from tunnelling service.</p></li>
+</ol>
+<p>The latter two methods are used when you are <em>outside</em> PoliMi network. Specifically, the access through tunnelling machine must be request and is activated only for users without the opportunity to get a VPN access from his/her own Department.</p>
+<blockquote>
+<div><p>VPN SERVICE ACTIVATION</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>To access the CFDHub HPC machines from outside PoliMi, you are required to ask your own Department ICT the activation of VPN service for your PoliMi account. Some indications about what it is and how it works are
+reported at <a class="reference external" href="https://www.asict.polimi.it/en/network-services/vpn.html">https://www.asict.polimi.it/en/network-services/vpn.html</a></p>
+<blockquote>
+<div><p>TUNNELLING SERVICE</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>For whom is not able to get the VPN access (e.g. master thesis students) the access will be provided by using a tunnelling approach.</p>
+<p>This kind of access needs to be activated by the technical manager of the CFDHub and should be indicated when the access for new users is required.</p>
+</div>
+<div class="section" id="steps-for-hpc-access">
+<h3><span class="section-number">2.1.3. </span>STEPS FOR HPC ACCESS<a class="headerlink" href="#steps-for-hpc-access" title="Permalink to this headline">¶</a></h3>
+<p>The steps to access the HPC machines (through both VPN service and tunnelling machine) are:</p>
+<ul class="simple">
+<li><p>installation of the software to access the cluster;</p></li>
+<li><p>setting of SSH session to access the cluster;</p></li>
+<li><p>creation of the graphical port for remote control of the cluster and use of VNC tool;</p></li>
+<li><p>setting of a VNC session to graphically access and control the HPC machines;</p></li>
+<li><p>settings to upload and download files to/from HPC machines to the local one.</p></li>
+</ul>
+<blockquote>
+<div><p>SOFTWARE INSTALLATION</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>Download and install the software <em>Mobaxterm</em>: <a class="reference external" href="https://mobaxterm.mobatek.net/download.html">https://mobaxterm.mobatek.net/download.html</a></p>
+<p>Possible quick solution is <em>putty</em>: <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html</a></p>
+<blockquote>
+<div><p>SSH SESSION SETTING</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>Connect to SSH server <em>131.175.56.199</em> through Port <em>22</em>.</p>
+</div>
+</div>
+<div class="section" id="modules">
+<h2><span class="section-number">2.2. </span>MODULES<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
+<p>How to use modules</p>
+</div>
+<div class="section" id="storage">
+<h2><span class="section-number">2.3. </span>STORAGE<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h2>
+<p>Storage possibilities</p>
+</div>
+<div class="section" id="how-to-submit-a-job">
+<h2><span class="section-number">2.4. </span>HOW TO SUBMIT A JOB<a class="headerlink" href="#how-to-submit-a-job" title="Permalink to this headline">¶</a></h2>
+<p>Instructions</p>
+</div>
+<div class="section" id="support">
+<h2><span class="section-number">2.5. </span>SUPPORT<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
+<p>Luigi non contattatelo!</p>
+</div>
+</div>
+<div class="section" id="group-specific-guides">
+<h1><span class="section-number">3. </span>GROUP SPECIFIC GUIDES<a class="headerlink" href="#group-specific-guides" title="Permalink to this headline">¶</a></h1>
+<p>Here find the group specific instructions</p>
+<div class="section" id="deng">
+<h2><span class="section-number">3.1. </span>DENG<a class="headerlink" href="#deng" title="Permalink to this headline">¶</a></h2>
+<p>Fate come volete</p>
+</div>
+<div class="section" id="dmec">
+<h2><span class="section-number">3.2. </span>DMEC<a class="headerlink" href="#dmec" title="Permalink to this headline">¶</a></h2>
+<p>Vigono regole molto rigide</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">provaCFDHub</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. INTRODUCTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#general-information">2. GENERAL INFORMATION</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">2.1. GETTING STARTED</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#access-to-the-cluster">2.1.1. ACCESS TO THE CLUSTER</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#types-of-access">2.1.2. TYPES OF ACCESS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#steps-for-hpc-access">2.1.3. STEPS FOR HPC ACCESS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modules">2.2. MODULES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#storage">2.3. STORAGE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-submit-a-job">2.4. HOW TO SUBMIT A JOB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#support">2.5. SUPPORT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#group-specific-guides">3. GROUP SPECIFIC GUIDES</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#deng">3.1. DENG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dmec">3.2. DMEC</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Welcome to provaCFDHub's documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Paolo Schito.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/test.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
