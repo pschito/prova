@@ -17,8 +17,8 @@ Please contact the CFDHub contact person of your research group to register to C
 +------------------------------+-----------------------------+
 | chimica                      | boh                         |
 +------------------------------+-----------------------------+
-| meccanica                    | Massimo Fossati             |
-|                              +-----------------------------+
+|                              | Massimo Fossati             |
+| meccanica                    +-----------------------------+
 |                              | Paolo Schito                |
 +------------------------------+-----------------------------+
 
