@@ -40,3 +40,10 @@ ___________________
 Once you inserted your user data and accessed to the cluster, you will see in the left side your terminal and in the right side the cluster folders (/home/energia/mereu in the example above).  
 
 To transfer (copy) data just drag files from one side to the other.  
+
+.. _Software:
+-------------------
+SOFTWARE
+-------------------
+
+The software installed on the cluster can be installed standalone or installed with modules.
