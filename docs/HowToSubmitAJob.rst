@@ -5,8 +5,8 @@ HOW TO SUBMIT A JOB
 To perform a calculation on CFDHub there are some information that need to be addressed.
 
 - Access to CFDHub (more information in THIS section)
-- :ref:`Data Transfer<datatransfer>` on the cluster (more information in THIS section)
-- :ref:`Software<software>` availability needs to be verified and eventually installed (more information in THIS section)
+- :ref:`Data Transfer<data-transfer>` on the cluster (more information in THIS section)
+- :ref:`Software<Software>` availability needs to be verified and eventually installed (more information in THIS section)
 - Follow the workflow of a hpc facility (more information in THIS section)
 - Launch your job (more information in THIS section)
 
