@@ -86,4 +86,11 @@ Possible quick solution is *putty*: https://www.chiark.greenend.org.uk/~sgtatham
 SSH SESSION SETTING 
 -----------------
 
-Connect to SSH server *131.175.56.199* through Port *22*. 
+Connect to SSH server *131.175.56.199* through Port *22*.
+Detailed information is available in section XXX.
+
+-----------------
+DATA TRANSFERRING 
+-----------------
+
+Come si caricano/scaricano i file 
