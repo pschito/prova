@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+
+<html lang="English">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3. ACCESS TO THE CLUSTER &#8212; User Guide 0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. HOW TO SUBMIT A JOB" href="HowToSubmitAJob.html" />
+    <link rel="prev" title="2. GETTING STARTED" href="GettingStarted.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="access-to-the-cluster">
+<span id="accesstothecluster"></span><h1><span class="section-number">3. </span>ACCESS TO THE CLUSTER<a class="headerlink" href="#access-to-the-cluster" title="Permalink to this headline">¶</a></h1>
+<p>This section describes how to install and set-up the programs needed to connect your terminal (workstation or laptop) to the cluster.</p>
+<p>The cluster environment is Linux OS. If you need some information on how to work in a Linux environment you may check the <a class="reference external" href="https://help.ubuntu.com/community/UsingTheTerminal">Ubuntu Help</a> or a <a class="reference external" href="http://www.ee.surrey.ac.uk/Teaching/Unix/index.html">UNIX Tutorial</a>.</p>
+<p>The master is the machine that manages all the communications between the cluster resources and the login nodes. Login nodes (<em>nodevg-0-x</em>) are the nodes used to manage the interaction between users and graphical parts and the computing nodes. When you log into the cluster you actually log into the master and then to the login nodes.</p>
+<div class="figure align-default">
+<img alt="_images/cfdhubStructure.png" src="_images/cfdhubStructure.png" />
+</div>
+<p>Figure: CFDHub hardware structure for user access.</p>
+<p>In order to use the computing resources you will have to log into nodevg-0-1 or nodevg-0-2 (dependng on your <a class="reference internal" href="#researchgroups"><span class="std std-ref">Research Group</span></a>) to successively use the computational resources.</p>
+<div class="line-block">
+<div class="line"><em>Remember:</em></div>
+<div class="line"><strong>Never launch a computational run from the master!</strong></div>
+<div class="line"><strong>Always check to be connected to the selected computing nodes before to launch the run!</strong></div>
+<div class="line"><strong>All the processes running on the master or the login nodes will be killed without any advice if affecting the functionality of the whole system.</strong></div>
+</div>
+<div class="section" id="requirements">
+<h2><span class="section-number">3.1. </span>REQUIREMENTS<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Three ways exist to access the CFDHub HPC:</p>
+<ul class="simple">
+<li><p>directly from PoliMi network;</p></li>
+<li><p>from VPN service;</p></li>
+<li><p>from tunnelling service.</p></li>
+</ul>
+<p>The latter two methods are used when you are <em>outside</em> PoliMi network. Specifically, the access through tunnelling machine must be request and is activated only for users without the opportunity to get a VPN access from his/her own Department.</p>
+</div>
+<div class="section" id="vpn-service-activation">
+<h2><span class="section-number">3.2. </span>VPN SERVICE ACTIVATION<a class="headerlink" href="#vpn-service-activation" title="Permalink to this headline">¶</a></h2>
+<p>To access the CFDHub HPC machines from outside PoliMi, you are required to ask your own Department IT staff the activation of VPN service for your PoliMi account. Some indications about what it is and how it works are reported at <a class="reference external" href="https://www.asict.polimi.it/en/network-services/vpn.html">https://www.asict.polimi.it/en/network-services/vpn.html</a></p>
+</div>
+<div class="section" id="tunnelling-service">
+<h2><span class="section-number">3.3. </span>TUNNELLING SERVICE<a class="headerlink" href="#tunnelling-service" title="Permalink to this headline">¶</a></h2>
+<p>For whom is not able to get the VPN access (e.g. master thesis students) the access will be provided by using a tunnelling approach.</p>
+<p>This kind of access needs to be activated by the technical manager of the CFDHub and should be indicated when the access for new users is required.</p>
+</div>
+<div class="section" id="steps-for-hpc-access">
+<h2><span class="section-number">3.4. </span>STEPS FOR HPC ACCESS<a class="headerlink" href="#steps-for-hpc-access" title="Permalink to this headline">¶</a></h2>
+<p>If you access the cluster from a Linux OS, you can directly jump to the <a class="reference internal" href="#sshconnection"><span class="std std-ref">SSH connection instructions</span></a>.</p>
+<p>If you are accessing from a non-Linux OS, the steps to access the HPC machines (through both VPN service and tunnelling machine) are:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#accesssoftwareinstallation"><span class="std std-ref">installation of the software to access the cluster</span></a>;</p></li>
+<li><p><a class="reference internal" href="#detailedsshconnection"><span class="std std-ref">setting of SSH session to access the cluster</span></a>;</p></li>
+<li><p><a class="reference internal" href="#graphicalport"><span class="std std-ref">creation of the graphical port for remote control of the cluster and use of VNC tool</span></a>;</p></li>
+<li><p><a class="reference internal" href="#vncsession"><span class="std std-ref">setting of a VNC session to graphically access and control the HPC machines</span></a>;</p></li>
+<li><p><a class="reference internal" href="#datatransferring"><span class="std std-ref">settings to upload and download files to/from HPC machines to the local one</span></a>.</p></li>
+</ul>
+</div>
+<div class="section" id="access-software-installation">
+<span id="accesssoftwareinstallation"></span><h2><span class="section-number">3.5. </span>ACCESS SOFTWARE INSTALLATION<a class="headerlink" href="#access-software-installation" title="Permalink to this headline">¶</a></h2>
+<p>Download and install the software <a class="reference external" href="https://mobaxterm.mobatek.net/download.html">MobaXterm</a>.</p>
+<p>Possible quick solution is <a class="reference external" href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">Putty</a>.</p>
+</div>
+<div class="section" id="ssh-connection">
+<span id="sshconnection"></span><h2><span class="section-number">3.6. </span>SSH CONNECTION<a class="headerlink" href="#ssh-connection" title="Permalink to this headline">¶</a></h2>
+<p>Connect to SSH server <em>131.175.56.199</em> through Port <em>22</em>.
+To start working on the cluster, it is necessary also to connect to the login nodes <em>nodevg-0-1</em> or <em>nodevg-0-2</em>, depending on your <a class="reference internal" href="#researchgroups"><span class="std std-ref">Research Group</span></a>.</p>
+<ul class="simple" id="researchgroups">
+<li><p>nodevg-0-1 (<em>10.0.0.121</em>)          Research groups of Chemical, Mathematical and Mechanical Engineering Departments;</p></li>
+<li><p>nodevg-0-2 (<em>10.0.0.122</em>)          Research groups of Energy, Electronic-BioEngineering and not mentioned Departments.</p></li>
+</ul>
+<p>For Linux users the command to access the CFDHub is:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;username&gt;&#64;131.175.56.199</span></code></p>
+</div></blockquote>
+<p>then to access your login node you may choose</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">nodevg-0-x</span></code> or <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">10.0.0.12x</span></code></p>
+</div></blockquote>
+<p>where <em>x = 1,2</em> depending on your <a class="reference internal" href="#researchgroups"><span class="std std-ref">Research Group</span></a>.</p>
+<p>Detailed information for non Linux OS is available in the following section.</p>
+<div class="section" id="detailed-ssh-connection-settings">
+<span id="detailedsshconnection"></span><h3><span class="section-number">3.6.1. </span>DETAILED SSH CONNECTION SETTINGS<a class="headerlink" href="#detailed-ssh-connection-settings" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Open the software and go to <em>Sessions</em> Tab --&gt; <em>New Session</em> --&gt; choose <em>SSH</em> and open the <em>Session setting</em> panel</p></li>
+<li><p>Set up the SSH session as described in Figure for <strong>connection through VPN</strong>. Use your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> instead of <em>mereu</em> and <em>nodevg-0-x</em> instead of <em>nodevg-0-2</em>, where <em>x = 1,2</em> based on your <a class="reference internal" href="#researchgroups"><span class="std std-ref">Research Group</span></a></p></li>
+</ol>
+<img alt="_images/SSH_1.png" src="_images/SSH_1.png" />
+<ol class="arabic simple" start="3">
+<li><p>Set up the SSH session as described in Figure for <strong>connection through tunnelling machine</strong>. Use your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> instead of <em>mereu</em> and <em>10.0.0.12x</em> instead of <em>10.0.0.122</em>, where <em>x = 1,2</em> based on your <a class="reference internal" href="#researchgroups"><span class="std std-ref">Research Group</span></a></p></li>
+</ol>
+<img alt="_images/SSH_2.png" src="_images/SSH_2.png" />
+<ol class="arabic simple" start="4">
+<li><p>Click OK to save the session</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="creation-of-a-graphical-port">
+<span id="graphicalport"></span><h2><span class="section-number">3.7. </span>CREATION OF A GRAPHICAL PORT<a class="headerlink" href="#creation-of-a-graphical-port" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic" start="5">
+<li><p>Open the SSH session created in the previous steps;</p></li>
+<li><p>In the SSH terminal digit:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">vncserver</span> <span class="pre">-name</span> <span class="pre">&lt;username&gt;</span>&#160; <span class="pre">-geometry</span> <span class="pre">0000X0000</span> <span class="pre">-depth</span> <span class="pre">24</span></code></p>
+</div></blockquote>
+<p>where <code class="docutils literal notranslate"><span class="pre">0000x0000</span></code> is the resolution of the monitor you use to work</p>
+<p>for example <code class="docutils literal notranslate"><span class="pre">vncserver</span> <span class="pre">-name</span> <span class="pre">mereu</span> <span class="pre">-geometry</span> <span class="pre">1920x1080</span> <span class="pre">-depth</span> <span class="pre">24</span></code></p>
+</li>
+<li><p>The graphical port assigned to you is indicated by the system:</p>
+<div class="line-block">
+<div class="line">for example</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Desktop</span> <span class="pre">TurboVNC:</span> <span class="pre">nodevg-0-2.local:01</span> <span class="pre">(mereu)</span> <span class="pre">started</span> <span class="pre">on</span> <span class="pre">display</span> <span class="pre">nodevg-0-2.local:01</span></code></div>
+</div>
+<p>means that the graphical port assigned is <em>01</em>.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="setting-of-vnc-session">
+<span id="vncsession"></span><h2><span class="section-number">3.8. </span>SETTING OF VNC SESSION<a class="headerlink" href="#setting-of-vnc-session" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" start="8">
+<li><p>Open the software and go to <em>Sessions</em> Tab --&gt; <em>New Session</em> --&gt; choose <em>VNC</em> and open the <em>Session setting</em> panel;</p></li>
+<li><p>Set up the VNC session as described in Figure for <strong>connection through VPN</strong>. Use your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> instead of <em>mereu</em> and <em>nodevg-0-x</em> instead of <em>nodevg-0-2</em>, where <em>x = 1,2</em> based on your <a class="reference internal" href="#researchgroups"><span class="std std-ref">Research Group</span></a>, and the port number provided by the system in step 7 putting in front the number <em>59</em> (e.g. if the assigned port is 35 put 5935 instead of 5901);</p></li>
+</ol>
+<img alt="_images/VNC_1.png" src="_images/VNC_1.png" />
+<ol class="arabic simple" start="10">
+<li><p>Set up the VNC session as described in Figure for <strong>connection through tunnelling machine</strong>. Use your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> instead of <em>mereu</em> and <em>10.0.0.12x</em> instead of <em>10.0.0.122</em>, where <em>x = 1,2</em> based on your <a class="reference internal" href="#researchgroups"><span class="std std-ref">Research Group</span></a>, and the port number provided by the system in step 7 putting in front the number <em>59</em> (e.g. if the assigned port is 35 put 5935 instead of 5901);</p></li>
+</ol>
+<img alt="_images/VNC_2.png" src="_images/VNC_2.png" />
+<ol class="arabic simple" start="11">
+<li><p>Click OK to save the session</p></li>
+</ol>
+</div>
+<div class="section" id="data-transferring">
+<span id="datatransferring"></span><h2><span class="section-number">3.9. </span>DATA TRANSFERRING<a class="headerlink" href="#data-transferring" title="Permalink to this headline">¶</a></h2>
+<p>In order to transfer files from your terminal to the cluster and vice versa, you may use the <code class="docutils literal notranslate"><span class="pre">scp</span></code> command from Linus OS.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">&lt;sourceDir&gt;</span> <span class="pre">&lt;targetDir&gt;</span></code></p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">&lt;localFile&gt;</span> <span class="pre">&lt;username&gt;&#64;131.175.56.199:&lt;remoteDirectory&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">&lt;username&gt;&#64;131.175.56.199:&lt;remoteFile&gt;</span> <span class="pre">&lt;localDirectory&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">&lt;localDirectory&gt;</span> <span class="pre">&lt;username&gt;&#64;131.175.56.199:&lt;remoteDirectory&gt;</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">-r</span> <span class="pre">&lt;username&gt;&#64;131.175.56.199:&lt;remoteDirectory&gt;</span> <span class="pre">&lt;localDirectory&gt;</span></code></div>
+</div>
+</div></blockquote>
+<p>For all other OS you may use the FTP software <a class="reference external" href="https://filezilla-project.org/download.php">Filezilla</a> can be used.</p>
+<div class="section" id="tunnelling-setup">
+<h3><span class="section-number">3.9.1. </span>TUNNELLING SETUP<a class="headerlink" href="#tunnelling-setup" title="Permalink to this headline">¶</a></h3>
+<p>To transfer data within MobaXterm software follow the instructions.</p>
+<ol class="arabic simple">
+<li><p>In MobaxTerm open <em>tools</em> and then <em>MobaSSHTunnel (port forwarding)</em></p></li>
+<li><p>Create a local port forwarding (New SSH Tunnel) with the set-up indicated in the image below. Use your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code> instead of <em>mereu</em> and <em>10.0.0.12x</em> instead of <em>10.0.0.122</em>, where <em>x = 1,2</em> based on your <a class="reference internal" href="#researchgroups"><span class="std std-ref">Research Group</span></a>;</p></li>
+</ol>
+<img alt="_images/DataTransferTunnel.png" src="_images/DataTransferTunnel.png" />
+<ol class="arabic simple" start="3">
+<li><p>Open tab <em>Tunnelling</em> and run the symbol play in <em>MobaSSHTunnel (port forwarding)</em></p></li>
+<li><p>Open Filezilla or session <em>SFTP</em> in MobaXterm and insert host <em>127.0.0.1</em>, your <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;</span></code>, your <code class="docutils literal notranslate"><span class="pre">&lt;password&gt;</span></code> and port <em>22</em>.</p></li>
+</ol>
+<p>Once you inserted your user data and accessed to the cluster, you will see in the left side your terminal and in the right side the cluster folders (<code class="docutils literal notranslate"><span class="pre">/home/energia/mereu</span></code> in the example above).</p>
+<p>To transfer (copy) data just drag files from one side to the other.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cfdHub_logo.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="index.html">User Guide</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. INTRODUCTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">2. GETTING STARTED</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. ACCESS TO THE CLUSTER</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">3.1. REQUIREMENTS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#vpn-service-activation">3.2. VPN SERVICE ACTIVATION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tunnelling-service">3.3. TUNNELLING SERVICE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#steps-for-hpc-access">3.4. STEPS FOR HPC ACCESS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#access-software-installation">3.5. ACCESS SOFTWARE INSTALLATION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ssh-connection">3.6. SSH CONNECTION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creation-of-a-graphical-port">3.7. CREATION OF A GRAPHICAL PORT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-of-vnc-session">3.8. SETTING OF VNC SESSION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-transferring">3.9. DATA TRANSFERRING</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="HowToSubmitAJob.html">4. HOW TO SUBMIT A JOB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Software.html">5. SOFTWARE</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="GettingStarted.html" title="previous chapter"><span class="section-number">2. </span>GETTING STARTED</a></li>
+      <li>Next: <a href="HowToSubmitAJob.html" title="next chapter"><span class="section-number">4. </span>HOW TO SUBMIT A JOB</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Paolo Schito.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/AccessToTheCluster.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
