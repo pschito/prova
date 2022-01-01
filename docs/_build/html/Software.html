@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+
+<html lang="English">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5. SOFTWARE &#8212; User Guide 0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="4. HOW TO SUBMIT A JOB" href="HowToSubmitAJob.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="software">
+<span id="id1"></span><h1><span class="section-number">5. </span>SOFTWARE<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h1>
+<p>The software installed on the cluster can be installed standalone or installed with modules.</p>
+<p>A not-comprehensive list of available software is:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#abaqus"><span class="std std-ref">Abaqus</span></a></p></li>
+<li><p><a class="reference internal" href="#ansysfluent"><span class="std std-ref">Ansys Fluent</span></a></p></li>
+<li><p><a class="reference internal" href="#comsol"><span class="std std-ref">Comsol</span></a></p></li>
+<li><p><a class="reference internal" href="#fds"><span class="std std-ref">FDS</span></a></p></li>
+<li><p><a class="reference internal" href="#matlab"><span class="std std-ref">Matlab</span></a></p></li>
+<li><p><a class="reference internal" href="#openfoam"><span class="std std-ref">OpenFOAM</span></a></p></li>
+<li><p><a class="reference internal" href="#pythonsection"><span class="std std-ref">Python</span></a></p></li>
+</ul>
+<p>Other software and software versions may be found through <em>modules</em> or in the directory <code class="docutils literal notranslate"><span class="pre">/software</span></code>.</p>
+<div class="section" id="abaqus">
+<span id="id2"></span><h2><span class="section-number">5.1. </span>Abaqus<a class="headerlink" href="#abaqus" title="Permalink to this headline">¶</a></h2>
+<p>TBD</p>
+</div>
+<div class="section" id="ansys-fluent">
+<span id="ansysfluent"></span><h2><span class="section-number">5.2. </span>Ansys Fluent<a class="headerlink" href="#ansys-fluent" title="Permalink to this headline">¶</a></h2>
+<p>TBD</p>
+</div>
+<div class="section" id="comsol">
+<span id="id3"></span><h2><span class="section-number">5.3. </span>Comsol<a class="headerlink" href="#comsol" title="Permalink to this headline">¶</a></h2>
+<p>TBD</p>
+</div>
+<div class="section" id="fds">
+<span id="id4"></span><h2><span class="section-number">5.4. </span>FDS<a class="headerlink" href="#fds" title="Permalink to this headline">¶</a></h2>
+<p>TBD</p>
+</div>
+<div class="section" id="matlab">
+<span id="id5"></span><h2><span class="section-number">5.5. </span>Matlab<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://it.mathworks.com">Matlab Software</a> is available on CFDHub.</p>
+<p>The software is installed in <code class="docutils literal notranslate"><span class="pre">/software/MATLAB</span></code>. With <code class="docutils literal notranslate"><span class="pre">ls</span></code> in the folder is possible to check which versions are available.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[&lt;username&gt;@nodevg-0-1 ~]$ cd /software/MATLAB
+[&lt;username&gt;@nodevg-0-1 MATLAB]$ ls
+</pre></div>
+</div>
+<p><em>If you are asking for more than one cpu, please make sure your script will use all requested cpus.</em></p>
+<p>You can use the software in different ways:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#matlabbatch"><span class="std std-ref">batch job on queues</span></a>;</p></li>
+<li><p><a class="reference internal" href="#matlabinteractive"><span class="std std-ref">interactive job on queues</span></a>;</p></li>
+<li><p><a class="reference internal" href="#matlabnode"><span class="std std-ref">interactive job on node</span></a>.</p></li>
+</ul>
+<div class="section" id="batch-job-using-queues">
+<span id="matlabbatch"></span><h3><span class="section-number">5.5.1. </span>Batch job using queues<a class="headerlink" href="#batch-job-using-queues" title="Permalink to this headline">¶</a></h3>
+<p>To submit a Matlab job using queues, prepare the launch file <code class="docutils literal notranslate"><span class="pre">matlabJob.sh</span></code> that will be used to run your script. Please check with your <a class="reference internal" href="GettingStarted.html#contactperson"><span class="std std-ref">CFDHub Contact Person</span></a> what are the <code class="docutils literal notranslate"><span class="pre">queues</span></code> you have access to.</p>
+<p>The result of the computation will be written on file (please make sure to save all relevant variables). The output will be written on the <em>jobOutput</em> file. if you wish you may redirect in another file (<code class="docutils literal notranslate"><span class="pre">myMatlabOutput</span></code>).</p>
+<p><em>In this case you will not have the graphical interface, so make sure your script does not open any figure, otherwise its execution will stop with errors.</em></p>
+<p><em>If you are asking for more than one cpu, please make sure your script will use all requested cpus.</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin.bash             # use bash as command interpreter</span>
+<span class="c1">#$ -cwd                 # currentWorkingDirectory</span>
+<span class="c1">#$ -N myMatlabJob       # jobName</span>
+<span class="c1">#$ -j y                 # merges output and errors</span>
+<span class="c1">#$ -S /bin/bash         # scripting language</span>
+<span class="c1">#$ -l walltime=1:00:00  # jobDuration hh:mm:ss</span>
+<span class="c1">#$ -q hub.q             # queueName</span>
+<span class="c1">#$ -pe mpi 2            # cpuNumber</span>
+<span class="c1">#________________________________________________________</span>
+
+<span class="c1">### Runs the Matlab &quot;script.m&quot; file.</span>
+<span class="c1">### You may change it to launch your script.</span>
+<span class="c1">###</span>
+<span class="c1">### Change R2018a with your desired version</span>
+
+<span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span><span class="n">R2018a</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">matlab</span> <span class="o">-</span><span class="n">noDesktop</span> <span class="o">-</span><span class="n">nosplash</span> <span class="o">-</span><span class="n">r</span> <span class="s2">&quot;script&quot;</span>
+<span class="c1"># /software/MATLAB/R2018a/bin/matlab -noDesktop -nosplash -r &quot;script&quot; &gt;&amp; myMatlabOutput</span>
+
+<span class="c1">### You may run also a second script</span>
+<span class="c1">### or another software in the same job.</span>
+
+<span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">MATLAB</span><span class="o">/</span><span class="n">R2018a</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">matlab</span> <span class="o">-</span><span class="n">noDesktop</span> <span class="o">-</span><span class="n">nosplash</span> <span class="o">-</span><span class="n">r</span> <span class="s2">&quot;script2&quot;</span>
+
+<span class="n">echo</span> <span class="n">End</span> <span class="n">Parallel</span> <span class="n">Run</span>
+</pre></div>
+</div>
+<p>To launch your <code class="docutils literal notranslate"><span class="pre">matlabJob.sh</span></code> file you may execute:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[&lt;username&gt;&#64;nodevg-0-1</span> <span class="pre">jobDirectory]$</span> <span class="pre">qsub</span> <span class="pre">matlabJob.sh</span></code></p>
+<p>To check how the job is proceeding from the login node, reading the output, you may use:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[&lt;username&gt;&#64;nodevg-0-1</span> <span class="pre">jobDirectory]$</span> <span class="pre">tail</span> <span class="pre">-f</span> <span class="pre">myMatlabOutput</span></code></p>
+</div>
+<div class="section" id="interactive-job-using-queues">
+<span id="matlabinteractive"></span><h3><span class="section-number">5.5.2. </span>Interactive job using queues<a class="headerlink" href="#interactive-job-using-queues" title="Permalink to this headline">¶</a></h3>
+<p>To submit an interactive Matlab job using queues, you need to ask one or more cpus to the desired queue. Please check with your <a class="reference internal" href="GettingStarted.html#contactperson"><span class="std std-ref">CFDHub Contact Person</span></a> what are the <code class="docutils literal notranslate"><span class="pre">queues</span></code> you have access to.</p>
+<p><em>In this case you will not have the graphical interface, so make sure your script does not open any figure, otherwise its execution will stop with errors.</em></p>
+<p><em>If you are asking for more than one cpu, please make sure your script will use all requested cpus.</em></p>
+<p>You need to follow the <a class="reference internal" href="HowToSubmitAJob.html#interactivequeue"><span class="std std-ref">instructions to launch an interactive job on a queue</span></a>. Be sure to be logged in your login node (<code class="docutils literal notranslate"><span class="pre">nodevg-0-1</span></code> or <code class="docutils literal notranslate"><span class="pre">nodevg-0-2</span></code>) and ask to the Job Scheduler your resources:</p>
+<p><code class="docutils literal notranslate"><span class="pre">qrsh</span> <span class="pre">-q</span> <span class="pre">hub.q</span> <span class="pre">-l</span> <span class="pre">h_rt=2:00:00</span> <span class="pre">-l</span> <span class="pre">h_vmem=2G</span> <span class="pre">-pe</span> <span class="pre">mpi</span> <span class="pre">2</span></code></p>
+<p>These instructions request on the <em>hub.q</em> queue (<code class="docutils literal notranslate"><span class="pre">-q</span> <span class="pre">hub.q</span></code>) 2 cpus (<code class="docutils literal notranslate"><span class="pre">-pe</span> <span class="pre">mpi</span> <span class="pre">2</span></code>) for 2 hours (<code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">h_rt=2:00:00</span></code>, hh:mm:ss) and 2GB of RAM (<code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">h_vmem=2G</span></code>).
+You can adjust the request according to your need.</p>
+<p>As reported in the <a class="reference internal" href="HowToSubmitAJob.html#interactivequeue"><span class="std std-ref">instructions to launch an interactive job</span></a> you may prepare an alias as well.</p>
+<p>The result of the computation will be written on file (please make sure to save all relevant variables). The output will be written on the <em>jobOutput</em> file. if you wish you may redirect in another file (<code class="docutils literal notranslate"><span class="pre">myMatlabOutput</span></code>).</p>
+<p>You will be then redirected on a node, ready to start your computation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[&lt;username&gt;@nodevg-0-1 ~]$ qrsh -q hub.q -l h_rt=2:00:00 -l h_vmem=2G -pe mpi 2
+... wait for node assigment
+[&lt;username&gt;@&lt;node&gt; ~]$
+... node assigned
+[&lt;username&gt;@&lt;node&gt; ~]$ cd myScriptDir
+[&lt;username&gt;@&lt;node&gt; myScriptDir]$ /software/MATLAB/R2018a/bin/matlab -noDesktop -nosplash -r &quot;script&quot;
+[&lt;username&gt;@&lt;node&gt; myScriptDir]$ /software/MATLAB/R2018a/bin/matlab -noDesktop -nosplash -r &quot;script&quot; &gt;&amp; myMatlabOutput &amp;
+</pre></div>
+</div>
+<p>You will be running the script &quot;script.m&quot; using Matlab R2018a.</p>
+<p>To check how the job is proceeding when writing the output to file you may use:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[&lt;username&gt;&#64;&lt;node&gt;</span> <span class="pre">myScriptDir]$</span> <span class="pre">tail</span> <span class="pre">-f</span> <span class="pre">myMatlabOutput</span></code></p>
+</div>
+<div class="section" id="interactive-job-on-a-node">
+<span id="matlabnode"></span><h3><span class="section-number">5.5.3. </span>Interactive job on a node<a class="headerlink" href="#interactive-job-on-a-node" title="Permalink to this headline">¶</a></h3>
+<p>To submit an interactive Matlab job on a node, you need to login on a node. Please check with your <a class="reference internal" href="GettingStarted.html#contactperson"><span class="std std-ref">CFDHub Contact Person</span></a> what are the <code class="docutils literal notranslate"><span class="pre">nodes</span></code> you have access to.</p>
+<p><em>If you are asking for more than one cpu, please make sure your script will use all requested cpus.</em></p>
+<p>You need to follow the <a class="reference internal" href="HowToSubmitAJob.html#interactivenode"><span class="std std-ref">instructions to launch an interactive job on a node</span></a>. Be sure to be logged in your login node (<code class="docutils literal notranslate"><span class="pre">nodevg-0-1</span></code> or <code class="docutils literal notranslate"><span class="pre">nodevg-0-1</span></code>) and check if your desired node is free.</p>
+<p>Once you logged in a node, you may run your script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[&lt;username&gt;@nodevg-0-1 ~]$ ssh &lt;node&gt;
+[&lt;username&gt;@nodevg-0-1 ~]$ cd myFolder
+[&lt;username&gt;@&lt;node&gt; myFolder]$ /software/MATLAB/R2018a/bin/matlab -noDesktop -nosplash -r &quot;script&quot;``
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="openfoam">
+<span id="id6"></span><h2><span class="section-number">5.6. </span>OpenFOAM<a class="headerlink" href="#openfoam" title="Permalink to this headline">¶</a></h2>
+<p>OpenFOAM is available on CFDHub.</p>
+<p>All three OpenFOAM versions are available:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.openfoam.com">OpenFOAM by ESI</a>;</p></li>
+<li><p><a class="reference external" href="https://foam-extend.sourceforge.io">FOAM-Extend Project</a>;</p></li>
+<li><p><a class="reference external" href="https://openfoam.org">OpenFOAM-Foundation</a>;</p></li>
+</ul>
+<p>The software is installed in <code class="docutils literal notranslate"><span class="pre">/software/OpenFOAM</span></code>. With <code class="docutils literal notranslate"><span class="pre">ls</span></code> in the folder is possible to check which versions are available.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[&lt;username&gt;@nodevg-0-1 ~]$ cd /software/OpenFOAM
+[&lt;username&gt;@nodevg-0-1 OpenFOAM]$ ls
+</pre></div>
+</div>
+<p>To load a version of OpenFOAM, it is necessary to source the <code class="docutils literal notranslate"><span class="pre">bashrc</span></code> file of the chosen version (or to include its sourcing in your <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file as you would do on your personal pc) in order to load the OpenFOAM environment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[&lt;username&gt;@nodevg-0-1 ~]$ source /software/OpenFOAM/OpenFOAM-8/etc/bashrc
+</pre></div>
+</div>
+<p>It is also possibile to use OpenFOAM through modules, using the relevant module (<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">use</span> <span class="pre">...</span></code>), looking for the relevant version (<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code>) and loading the choosen version (<code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">load</span> <span class="pre">...</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[&lt;username&gt;@nodevg-0-1 ~]$ module use /big-scratch/software/modules/mecc4/CFD
+[&lt;username&gt;@nodevg-0-1 ~]$ module avail
+[&lt;username&gt;@nodevg-0-1 ~]$ module load openfoam-v2106
+</pre></div>
+</div>
+<p>To check that you correctly loaded OpenFOAM, you can run the following command, verifying that the system recognizes the solver (<em>simpleFOAM</em> is available for all OpenFOAM versions) and it will tell you where it is located (to check that the correct version of OpenFOAM is loaded, <em>OpenFOAM-8</em> in this case):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[&lt;username&gt;@nodevg-0-1 ~]$ which simpleFoam
+/software/OpenFOAM/OpenFOAM-8/platforms/linux64GccDPInt32Opt/bin/simpleFoam
+</pre></div>
+</div>
+<p><em>If you require to launch a job with many cpus please verify the scalability of your simulation (OpenFOAM generally scales well up to 100.000 cells per core), but please verify your setup. Since the cluster is used by many users please check the availability of cpus.</em></p>
+<p>You can use the software in different ways:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#openfoambatch"><span class="std std-ref">batch job on queues</span></a>;</p></li>
+<li><p><a class="reference internal" href="#openfoaminteractive"><span class="std std-ref">interactive job on queues</span></a>;</p></li>
+<li><p><a class="reference internal" href="#openfoamnode"><span class="std std-ref">interactive job on node</span></a>.</p></li>
+</ul>
+<div class="section" id="openfoambatch">
+<span id="id7"></span><h3><span class="section-number">5.6.1. </span>Batch job using queues<a class="headerlink" href="#openfoambatch" title="Permalink to this headline">¶</a></h3>
+<p>To submit a OpenFOAM job using queues, prepare the launch file <code class="docutils literal notranslate"><span class="pre">OpenFOAMJob.sh</span></code> that will be used to run your script. Please check with your <a class="reference internal" href="GettingStarted.html#contactperson"><span class="std std-ref">CFDHub Contact Person</span></a> what are the <code class="docutils literal notranslate"><span class="pre">queues</span></code> you have access to.</p>
+<p>The result of the computation will be written on file according to what you specified in your <code class="docutils literal notranslate"><span class="pre">system/controlDict</span></code> file. The output will be written on the <em>jobOutput</em> file. if you wish you may redirect in another file (typically <code class="docutils literal notranslate"><span class="pre">log.$solver</span></code>).</p>
+<p><em>If you are asking for more than one cpu, please make sure your requested cpus and the number of *processors</em> are coincident, so you will use all requested cpus.*</p>
+<p>Here an example of launch file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin.bash             # use bash as command interpreter</span>
+<span class="c1">#$ -cwd                 # currentWorkingDirectory</span>
+<span class="c1">#$ -N myOpenFOAMJob     # jobName</span>
+<span class="c1">#$ -j y                 # merges output and errors</span>
+<span class="c1">#$ -S /bin/bash         # scripting language</span>
+<span class="c1">#$ -l walltime=3:00:00  # jobDuration hh:mm:ss</span>
+<span class="c1">#$ -q hub.q             # queueName</span>
+<span class="c1">#$ -pe mpi 4            # cpuNumber</span>
+<span class="c1">#---------------------------------------------------------</span>
+
+<span class="c1">### LOAD THE OPENFOAM ENVIRONMENT</span>
+<span class="n">source</span> <span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">OpenFOAM</span><span class="o">/</span><span class="n">OpenFOAM</span><span class="o">-</span><span class="mi">8</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">bashrc</span>
+
+<span class="c1">#module use /big-scratch/software/modules/mecc4/CFD</span>
+<span class="c1">#module load openfoam-v2106</span>
+
+<span class="c1">#---------------------------------------------------------</span>
+
+<span class="c1">### EXECUTE COMMANDS</span>
+<span class="c1">#./Allrun</span>
+
+<span class="n">blockMesh</span> <span class="o">&gt;&amp;</span> <span class="n">log</span><span class="o">.</span><span class="n">blockMesh</span>
+<span class="n">decomposePar</span> <span class="o">&gt;&amp;</span> <span class="n">log</span><span class="o">.</span><span class="n">snappyHexMesh</span>
+<span class="n">mpirun</span> <span class="n">snappyHexMesh</span> <span class="o">-</span><span class="n">parallel</span> <span class="o">&gt;&amp;</span> <span class="n">log</span><span class="o">.</span><span class="n">snappyHexMesh</span>
+<span class="n">mpirun</span> <span class="n">simpleFoam</span> <span class="o">-</span><span class="n">parallel</span> <span class="o">&gt;&amp;</span> <span class="n">log</span><span class="o">.</span><span class="n">simpleFoam</span>
+<span class="n">reconstructPar</span> <span class="o">-</span><span class="n">latestTime</span> <span class="o">&gt;&amp;</span> <span class="n">log</span><span class="o">.</span><span class="n">reconstructPar</span>
+<span class="n">sample</span> <span class="o">-</span><span class="n">latestTime</span> <span class="o">&gt;&amp;</span> <span class="n">log</span><span class="o">.</span><span class="n">sample</span>
+
+<span class="n">echo</span> <span class="n">End</span> <span class="n">Parallel</span> <span class="n">Run</span>
+</pre></div>
+</div>
+<p>as you may see you can either choose to load the OpenFOAM environment using modules or sourcing the <em>bashrc</em> file. Just add/remove <em>hashtags</em> [#] to comment/uncomment the lines. To execute the commands, you may either include an executable file (<code class="docutils literal notranslate"><span class="pre">Allrun</span></code> in this case), or list all relevant commands.</p>
+<p>To launch your <code class="docutils literal notranslate"><span class="pre">OpenFOAMJob.sh</span></code> file from the <em>login node</em>, from the <code class="docutils literal notranslate"><span class="pre">jobDirectory</span></code> you may execute:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[&lt;username&gt;&#64;nodevg-0-x</span> <span class="pre">jobDirectory]$</span> <span class="pre">qsub</span> <span class="pre">OpenFOAMJob.sh</span></code></p>
+<p>To check the status of the job you may use the <code class="docutils literal notranslate"><span class="pre">qstat</span> <span class="pre">-u</span> <span class="pre">&lt;username&gt;</span></code> command to see if the job started. To check how the job is proceeding from the login node, reading the output, you may use:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[&lt;username&gt;&#64;nodevg-0-1</span> <span class="pre">jobDirectory]$</span> <span class="pre">tail</span> <span class="pre">-f</span> <span class="pre">log.simpleFoam</span></code></p>
+</div>
+<div class="section" id="openfoaminteractive">
+<span id="id8"></span><h3><span class="section-number">5.6.2. </span>Interactive job using queues<a class="headerlink" href="#openfoaminteractive" title="Permalink to this headline">¶</a></h3>
+<p>To submit an interactive OpenFOAM job using queues, you need to ask one or more cpus to the desired queue. Please check with your <a class="reference internal" href="GettingStarted.html#contactperson"><span class="std std-ref">CFDHub Contact Person</span></a> what are the <code class="docutils literal notranslate"><span class="pre">queues</span></code> you have access to.</p>
+<p><em>If you are asking for more than one cpu, please make sure your script will use all requested cpus.</em></p>
+<p>You need to follow the <a class="reference internal" href="HowToSubmitAJob.html#interactivequeue"><span class="std std-ref">instructions to launch an interactive job on a queue</span></a>. Be sure to be logged in your login node (<code class="docutils literal notranslate"><span class="pre">nodevg-0-1</span></code> or <code class="docutils literal notranslate"><span class="pre">nodevg-0-2</span></code>) and ask to the Job Scheduler your resources:</p>
+<p><code class="docutils literal notranslate"><span class="pre">qrsh</span> <span class="pre">-q</span> <span class="pre">hub.q</span> <span class="pre">-l</span> <span class="pre">h_rt=2:00:00</span> <span class="pre">-l</span> <span class="pre">h_vmem=2G</span> <span class="pre">-pe</span> <span class="pre">mpi</span> <span class="pre">2</span></code></p>
+<p>These instructions request on the <em>hub.q</em> queue (<code class="docutils literal notranslate"><span class="pre">-q</span> <span class="pre">hub.q</span></code>) 2 cpus (<code class="docutils literal notranslate"><span class="pre">-pe</span> <span class="pre">mpi</span> <span class="pre">2</span></code>) for 2 hours (<code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">h_rt=2:00:00</span></code>, hh:mm:ss) and 2GB of RAM (<code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">h_vmem=2G</span></code>).
+You can adjust the request according to your need.</p>
+<p>As reported in the <a class="reference internal" href="HowToSubmitAJob.html#interactivequeue"><span class="std std-ref">instructions to launch an interactive job</span></a> you may prepare an alias as well.</p>
+<p>To make an interactive OpenFOAM job you will need to ask some computational resources <code class="docutils literal notranslate"><span class="pre">qrsh</span> <span class="pre">-q</span> <span class="pre">...</span></code>, load the OpenFOAM environment sourcing the bashrc or loading the module (eventually verifying that everything works correctly <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">simpleFoam</span></code>) and then start with the interactive job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[&lt;username&gt;@nodevg-0-1 ~]$ qrsh -q hub.q -l h_rt=2:00:00 -l h_vmem=2G -pe mpi 2
+... wait for node assigment
+[&lt;username&gt;@&lt;node&gt; ~]$
+... node assigned
+[&lt;username&gt;@&lt;node&gt; ~]$ source /software/OpenFOAM/OpenFOAM-8/etc/bashrc
+# [&lt;username&gt;@&lt;node&gt; ~]$ module use /big-scratch/software/modules/mecc4/CFD
+# [&lt;username&gt;@&lt;node&gt; ~]$ module load openfoam-v2106
+[&lt;username&gt;@&lt;node&gt; ~]$ which simpleFoam
+/software/OpenFOAM/OpenFOAM-8/platforms/linux64GccDPInt32Opt/bin/simpleFoam
+[&lt;username&gt;@&lt;node&gt; ~]$ cd myJobFolder
+[&lt;username&gt;@&lt;node&gt; myJobFolder]$ blockMesh
+[&lt;username&gt;@&lt;node&gt; myScriptDir]$ blockMesh &gt;&amp; log.blockMesh &amp;
+[&lt;username&gt;@&lt;node&gt; myScriptDir]$ tail -f log.blockMesh
+</pre></div>
+</div>
+<p>You will be running <em>blockMesh</em> using <em>OpenFOAM-8</em>.</p>
+<p>Two ways of running are reported: in the first you will see what the solver is foreground; in the second the solver will run in background (see tailing <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>) writing to file the output.</p>
+</div>
+<div class="section" id="openfoamnode">
+<span id="id9"></span><h3><span class="section-number">5.6.3. </span>Interactive job on a node<a class="headerlink" href="#openfoamnode" title="Permalink to this headline">¶</a></h3>
+<p>To submit an interactive OpenFOAM job on a node, you need to login on a node. Please check with your <a class="reference internal" href="GettingStarted.html#contactperson"><span class="std std-ref">CFDHub Contact Person</span></a> what are the <code class="docutils literal notranslate"><span class="pre">nodes</span></code> you have access to.</p>
+<p>You need to follow the <a class="reference internal" href="HowToSubmitAJob.html#interactivenode"><span class="std std-ref">instructions to launch an interactive job on a node</span></a>. Be sure to be logged in your login node (<code class="docutils literal notranslate"><span class="pre">nodevg-0-1</span></code> or <code class="docutils literal notranslate"><span class="pre">nodevg-0-1</span></code>) and check if your desired node is free.</p>
+<p>Once you logged in a node, load the OpenFOAM environment sourcing the bashrc or loading the module (eventually verifying that everything works correctly <code class="docutils literal notranslate"><span class="pre">which</span> <span class="pre">simpleFoam</span></code>) and then start with the interactive job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[&lt;username&gt;@nodevg-0-1 ~]$ ssh &lt;node&gt;
+[&lt;username&gt;@&lt;node&gt; ~]$ source /software/OpenFOAM/OpenFOAM-8/etc/bashrc
+# [&lt;username&gt;@&lt;node&gt; ~]$ module use /big-scratch/software/modules/mecc4/CFD
+# [&lt;username&gt;@&lt;node&gt; ~]$ module load openfoam-v2106
+[&lt;username&gt;@&lt;node&gt; ~]$ which simpleFoam
+/software/OpenFOAM/OpenFOAM-8/platforms/linux64GccDPInt32Opt/bin/simpleFoam
+[&lt;username&gt;@&lt;node&gt; ~]$ cd myJobFolder
+[&lt;username&gt;@&lt;node&gt; myJobFolder]$ blockMesh
+[&lt;username&gt;@&lt;node&gt; myScriptDir]$ blockMesh &gt;&amp; log.blockMesh &amp;
+[&lt;username&gt;@&lt;node&gt; myScriptDir]$ tail -f log.blockMesh
+</pre></div>
+</div>
+<p>You will be running <em>blockMesh</em> using <em>OpenFOAM-8</em>.</p>
+<p>Two ways of running are reported: in the first you will see what the solver is foreground; in the second the solver will run in background (see tailing <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>) writing to file the output.</p>
+</div>
+</div>
+<div class="section" id="python">
+<span id="pythonsection"></span><h2><span class="section-number">5.7. </span>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.python.org">Python</a> is available on CFDHub.</p>
+<p>The software is available in Linux OS.</p>
+<p>You can use the software in different ways:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#pythonbatch"><span class="std std-ref">batch job on queues</span></a>;</p></li>
+<li><p><a class="reference internal" href="#pythoninteractive"><span class="std std-ref">interactive job on queues</span></a>;</p></li>
+<li><p><a class="reference internal" href="#pythonnode"><span class="std std-ref">interactive job on node</span></a>.</p></li>
+</ul>
+<div class="section" id="pythonbatch">
+<span id="id11"></span><h3><span class="section-number">5.7.1. </span>Batch job using queues<a class="headerlink" href="#pythonbatch" title="Permalink to this headline">¶</a></h3>
+<p>To submit a Python job using queues, prepare the launch file <code class="docutils literal notranslate"><span class="pre">PythonJob.sh</span></code> that will be used to run your script. Please check with your <a class="reference internal" href="GettingStarted.html#contactperson"><span class="std std-ref">CFDHub Contact Person</span></a> what are the <code class="docutils literal notranslate"><span class="pre">queues</span></code> you have access to.</p>
+<p>The result of the computation will be written on file (please make sure to save all relevant variables). The output will be written on the <em>jobOutput</em> file. if you wish you may redirect in another file (<code class="docutils literal notranslate"><span class="pre">myPythonOutput</span></code>).</p>
+<p><em>If you are asking for more than one cpu, please make sure your requested cpus and the number of *processors</em> are coincident, so you will use all requested cpus.*</p>
+<p>Here an example of launch file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin.bash             # use bash as command interpreter</span>
+<span class="c1">#$ -cwd                 # currentWorkingDirectory</span>
+<span class="c1">#$ -N myPythonJob       # jobName</span>
+<span class="c1">#$ -j y                 # merges output and errors</span>
+<span class="c1">#$ -S /bin/bash         # scripting language</span>
+<span class="c1">#$ -l walltime=2:00:00  # jobDuration hh:mm:ss</span>
+<span class="c1">#$ -q hub.q             # queueName</span>
+<span class="c1">#$ -pe mpi 2            # cpuNumber</span>
+<span class="c1">#---------------------------------------------------------</span>
+
+<span class="c1">### EXECUTE COMMANDS</span>
+<span class="n">python</span> <span class="n">myPythonScript</span> <span class="o">&gt;&amp;</span> <span class="n">myPythonOutput</span>
+
+<span class="n">echo</span> <span class="n">End</span> <span class="n">Parallel</span> <span class="n">Run</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pythoninteractive">
+<span id="id12"></span><h3><span class="section-number">5.7.2. </span>Interactive job using queues<a class="headerlink" href="#pythoninteractive" title="Permalink to this headline">¶</a></h3>
+<p>To submit an interactive Python job using queues, you need to ask one or more cpus to the desired queue. Please check with your <a class="reference internal" href="GettingStarted.html#contactperson"><span class="std std-ref">CFDHub Contact Person</span></a> what are the <code class="docutils literal notranslate"><span class="pre">queues</span></code> you have access to.</p>
+<p>You need to follow the <a class="reference internal" href="HowToSubmitAJob.html#interactivequeue"><span class="std std-ref">instructions to launch an interactive job on a queue</span></a>. Be sure to be logged in your login node (<code class="docutils literal notranslate"><span class="pre">nodevg-0-1</span></code> or <code class="docutils literal notranslate"><span class="pre">nodevg-0-2</span></code>) and ask to the Job Scheduler your resources:</p>
+<p><code class="docutils literal notranslate"><span class="pre">qrsh</span> <span class="pre">-q</span> <span class="pre">hub.q</span> <span class="pre">-l</span> <span class="pre">h_rt=2:00:00</span> <span class="pre">-l</span> <span class="pre">h_vmem=2G</span> <span class="pre">-pe</span> <span class="pre">mpi</span> <span class="pre">2</span></code></p>
+<p>These instructions request on the <em>hub.q</em> queue (<code class="docutils literal notranslate"><span class="pre">-q</span> <span class="pre">hub.q</span></code>) 2 cpus (<code class="docutils literal notranslate"><span class="pre">-pe</span> <span class="pre">mpi</span> <span class="pre">2</span></code>) for 2 hours (<code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">h_rt=2:00:00</span></code>, hh:mm:ss) and 2GB of RAM (<code class="docutils literal notranslate"><span class="pre">-l</span> <span class="pre">h_vmem=2G</span></code>).
+You can adjust the request according to your need.</p>
+<p>As reported in the <a class="reference internal" href="HowToSubmitAJob.html#interactivequeue"><span class="std std-ref">instructions to launch an interactive job</span></a> you may prepare an alias as well.</p>
+<p>To make an interactive Python job you will need to ask some computational resources <code class="docutils literal notranslate"><span class="pre">qrsh</span> <span class="pre">-q</span> <span class="pre">...</span></code>, and then start with the interactive job which may be with a script or directly writing commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[&lt;username&gt;@nodevg-0-1 ~]$ qrsh -q hub.q -l h_rt=2:00:00 -l h_vmem=2G -pe mpi 2
+... wait for node assigment
+[&lt;username&gt;@&lt;node&gt; ~]$
+... node assigned
+[&lt;username&gt;@&lt;node&gt; ~]$ cd myJobFolder
+[&lt;username&gt;@&lt;node&gt; myJobFolder]$ python myPythonScript.py
+[&lt;username&gt;@&lt;node&gt; ~]$ python
+Python 2.6.6 (r266:84292, Nov 22 2013, 12:16:22)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-4)] on linux2
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<p>Two ways of running are reported: in the first you are running your <em>myPythonScript</em>; in the second you are writing the instructions to python.</p>
+</div>
+<div class="section" id="pythonnode">
+<span id="id13"></span><h3><span class="section-number">5.7.3. </span>Interactive job on a node<a class="headerlink" href="#pythonnode" title="Permalink to this headline">¶</a></h3>
+<p>To submit an interactive OpenFOAM job on a node, you need to login on a node. Please check with your <a class="reference internal" href="GettingStarted.html#contactperson"><span class="std std-ref">CFDHub Contact Person</span></a> what are the <code class="docutils literal notranslate"><span class="pre">nodes</span></code> you have access to.</p>
+<p>You need to follow the <a class="reference internal" href="HowToSubmitAJob.html#interactivenode"><span class="std std-ref">instructions to launch an interactive job on a node</span></a>. Be sure to be logged in your login node (<code class="docutils literal notranslate"><span class="pre">nodevg-0-1</span></code> or <code class="docutils literal notranslate"><span class="pre">nodevg-0-1</span></code>) and check if your desired node is free.</p>
+<p>To make an interactive Python job you will need to ask some computational resources <code class="docutils literal notranslate"><span class="pre">qrsh</span> <span class="pre">-q</span> <span class="pre">...</span></code>, and then start with the interactive job which may be with a script or directly writing commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[&lt;username&gt;@nodevg-0-1 ~]$ ssh &lt;node&gt;
+[&lt;username&gt;@&lt;node&gt; ~]$ cd myJobFolder
+[&lt;username&gt;@&lt;node&gt; myJobFolder]$ python myPythonScript.py
+[&lt;username&gt;@&lt;node&gt; ~]$ python
+Python 2.6.6 (r266:84292, Nov 22 2013, 12:16:22)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-4)] on linux2
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<p>Two ways of running are reported: in the first you are running your <em>myPythonScript</em>; in the second you are writing the instructions to python.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/cfdHub_logo.png" alt="Logo"/>
+            </a></p>
+<h1 class="logo"><a href="index.html">User Guide</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Introduction.html">1. INTRODUCTION</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GettingStarted.html">2. GETTING STARTED</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AccessToTheCluster.html">3. ACCESS TO THE CLUSTER</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HowToSubmitAJob.html">4. HOW TO SUBMIT A JOB</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. SOFTWARE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#abaqus">5.1. Abaqus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ansys-fluent">5.2. Ansys Fluent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comsol">5.3. Comsol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fds">5.4. FDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matlab">5.5. Matlab</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#openfoam">5.6. OpenFOAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#python">5.7. Python</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="HowToSubmitAJob.html" title="previous chapter"><span class="section-number">4. </span>HOW TO SUBMIT A JOB</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Paolo Schito.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/Software.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
